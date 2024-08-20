@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ExchangeRate } from '$lib/exchangeRates/types';
+	import type { ExchangeRate } from '$lib/data/types';
 
 	export let rates: ExchangeRate[];
 </script>
@@ -9,13 +9,17 @@
 		<tr>
 			<th>Currency</th>
 			<th>Rate</th>
+			<th>From</th>
+			<th>To</th>
 		</tr>
 	</thead>
 	<tbody>
 		{#each rates as rate}
 			<tr>
-				<td>{rate.to}</td>
+				<td>{rate.date.toLocaleDateString()}</td>
 				<td>{rate.rate}</td>
+				<td>{rate.from.code}</td>
+				<td>{rate.to.code}</td>
 			</tr>
 		{/each}
 	</tbody>
